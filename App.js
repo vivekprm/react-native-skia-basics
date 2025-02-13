@@ -1,24 +1,29 @@
-import { useEffect } from "react";
-import { Canvas, useCanvasRef, Circle } from "@shopify/react-native-skia";
-const App = () => {
-  const ref = useCanvasRef();
-  useEffect(() => {
-    setTimeout(() => {
-      // you can pass an optional rectangle
-      // to only save part of the image
-      const image = ref.current?.makeImageSnapshot();
-      if (image) {
-        // you can use image in an <Image> component
-        // Or save to file using encodeToBytes -> Uint8Array
-        const bytes = image.encodeToBytes();
-        console.log(bytes);
-      }
-    }, 1000);
-  });
+import React from "react";
+import { Canvas, Fill } from "@shopify/react-native-skia";
+import { useContextBridge, FiberProvider } from "its-fine";
+import { ThemeProvider, useTheme } from "./ThemeProvider";
+const MyDrawing = () => {
+  const { primary } = useTheme();
+  return <Fill color={primary} />;
+};
+export const Layer = () => {
+  const ContextBridge = useContextBridge();
   return (
-    <Canvas style={{ flex: 1 }} ref={ref}>
-      <Circle r={128} cx={128} cy={128} color="red" />
+    <Canvas style={{ flex: 1 }}>
+      <ContextBridge>
+        <Fill color="black" />
+        <MyDrawing />
+      </ContextBridge>
     </Canvas>
+  );
+};
+const App = () => {
+  return (
+    <FiberProvider>
+      <ThemeProvider primary="blue">
+        <Layer />
+      </ThemeProvider>
+    </FiberProvider>
   );
 };
 
