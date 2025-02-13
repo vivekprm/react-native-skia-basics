@@ -108,3 +108,118 @@ And setup post install script as below:
 ```json
 "postinstall": "npx setup-skia-web public && node path-fs-canvaskit-postinstall.js"
 ```
+
+# Canvas
+The Canvas component is the root of your Skia drawing. You can treat it as a regular React Native view and assign a view style. Behind the scenes, it is using its own React renderer.
+
+## Getting the Canvas size
+If the size of the Canvas is unknown, there are two ways to access it:
+
+- On the JS thread, using the [onLayout](https://reactnative.dev/docs/view#onlayout) prop, like you would on any regular React Native View.
+- On the UI thread, using the [onSize](https://shopify.github.io/react-native-skia/docs/animations/hooks#canvas-size) prop with [Reanimated](https://shopify.github.io/react-native-skia/docs/animations/animations).
+
+## Getting a Canvas Snapshot
+You can save your drawings as an image by using the ```makeImageSnapshotAsync``` method. This method returns a promise that resolves to an [Image](https://shopify.github.io/react-native-skia/docs/images). It executes on the UI thread, ensuring access to the same Skia context as your on-screen canvases, including [textures](https://shopify.github.io/react-native-skia/docs/animations/textures).
+
+If your drawing does not contain textures, you may also use the synchronous ```makeImageSnapshot``` method for simplicity.
+
+```js
+import {useEffect} from "react";
+import {Canvas, useCanvasRef, Circle} from "@shopify/react-native-skia";
+ 
+export const Demo = () => {
+  const ref = useCanvasRef();
+  useEffect(() => {
+    setTimeout(() => {
+      // you can pass an optional rectangle
+      // to only save part of the image
+      const image = ref.current?.makeImageSnapshot();
+      if (image) {
+        // you can use image in an <Image> component
+        // Or save to file using encodeToBytes -> Uint8Array
+        const bytes = image.encodeToBytes();
+      }
+    }, 1000)
+  });
+  return (
+    <Canvas style={{ flex: 1 }} ref={ref}>
+      <Circle r={128} cx={128} cy={128} color="red" />
+    </Canvas>
+  );
+};
+```
+
+## Accessibilty
+The Canvas component supports the same properties as a View component including its [accessibility properties](https://reactnative.dev/docs/accessibility#accessible). You can make elements inside the canvas accessible as well by overlayings views on top of your canvas. This is the same recipe used for [applying gestures on specific canvas elements](https://shopify.github.io/react-native-skia/docs/animations/gestures/#element-tracking).
+
+## Contexts
+React Native Skia is using its own React renderer. It is currently impossible to automatically share a React context between two renderers. This means that a React Native context won't be available from your drawing directly. We recommend preparing the data needed for your drawing outside the <Canvas> element. However, if you need to use a React context within your drawing, you must re-inject it.
+
+We found [its-fine](https://github.com/pmndrs/its-fine), also used by [react-three-fiber](https://github.com/pmndrs/react-three-fiber), to provide an elegant solution to this problem.
+
+### Using its-fine
+```js
+import React from "react";
+import { Canvas, Fill } from "@shopify/react-native-skia";
+import {useTheme, ThemeProvider, ThemeContext} from "./docs/getting-started/Theme";
+import { useContextBridge, FiberProvider } from "its-fine";
+ 
+const MyDrawing = () => {
+  const { primary } = useTheme();
+  return <Fill color={primary} />;
+};
+ 
+export const Layer = () => {
+  const ContextBridge = useContextBridge();
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <ContextBridge>
+        <Fill color="black" />
+        <MyDrawing />
+      </ContextBridge>
+    </Canvas>
+  );
+};
+ 
+export const App = () => {
+  return (
+    <FiberProvider>
+      <ThemeProvider primary="red">
+        <Layer />
+      </ThemeProvider>
+    </FiberProvider>
+  );
+};
+```
+
+Below is the context definition that was used in this example:
+```js
+import type { ReactNode } from "react";
+import React, { useContext, createContext } from "react";
+ 
+interface Theme {
+  primary: string;
+}
+ 
+export const ThemeContext = createContext<Theme | null>(null);
+ 
+export const ThemeProvider = ({
+  primary,
+  children,
+}: {
+  primary: string;
+  children: ReactNode;
+}) => (
+  <ThemeContext.Provider value={{ primary }}>
+    {children}
+  </ThemeContext.Provider>
+);
+ 
+export const useTheme = () => {
+  const theme = useContext(ThemeContext);
+  if (theme === null) {
+    throw new Error("Theme provider not found");
+  }
+  return theme;
+};
+```

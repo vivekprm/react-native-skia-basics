@@ -1,44 +1,25 @@
-import React from "react";
-import { Canvas, Circle, Group } from "@shopify/react-native-skia";
-import { useAnimatedStyle, useSharedValue } from "react-native-reanimated";
-import {
-  Gesture,
-  GestureDetector,
-  GestureHandlerRootView,
-} from "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
+import { useEffect } from "react";
+import { Canvas, useCanvasRef, Circle } from "@shopify/react-native-skia";
 const App = () => {
-  const width = 256;
-  const height = 256;
-  const r = useSharedValue(width * 0.33);
-  const color = useSharedValue("cyan");
-
-  const tap = Gesture.Tap()
-    .onBegin(() => {
-      r.value = r.value + 10;
-      color.value = "blue";
-    })
-    .onFinalize(() => {
-      r.value = width * 0.33;
-      color.value = "cyan";
-    });
+  const ref = useCanvasRef();
+  useEffect(() => {
+    setTimeout(() => {
+      // you can pass an optional rectangle
+      // to only save part of the image
+      const image = ref.current?.makeImageSnapshot();
+      if (image) {
+        // you can use image in an <Image> component
+        // Or save to file using encodeToBytes -> Uint8Array
+        const bytes = image.encodeToBytes();
+        console.log(bytes);
+      }
+    }, 1000);
+  });
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <GestureDetector gesture={tap}>
-        <Canvas style={{ width, height }}>
-          <Circle cx={r} cy={r} r={r} color={color} />
-        </Canvas>
-      </GestureDetector>
-    </GestureHandlerRootView>
+    <Canvas style={{ flex: 1 }} ref={ref}>
+      <Circle r={128} cx={128} cy={128} color="red" />
+    </Canvas>
   );
 };
-export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-  },
-});
+export default App;
