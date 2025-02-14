@@ -998,3 +998,9 @@ const PointsDemo = () => {
   );
 };
 ```
+
+## Ellipses
+https://shopify.github.io/react-native-skia/docs/shapes/ellipses
+
+## Atlas
+https://shopify.github.io/react-native-skia/docs/shapes/atlas
