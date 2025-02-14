@@ -2,6 +2,12 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import PathDemo from "./examples/PathDemo";
 import TrimSVGPath from "./examples/TrimSVGPath";
 import FillTypeDemo from "./examples/FillTypeDemo";
+import RectDemo from "./examples/RectDemo";
+import RoundedRectDemo from "./examples/RoundedRectDemo";
+import CustomRoundedRectDemo from "./examples/CustomRoundedRectDemo";
+import DiffRectDemo from "./examples/DiffRectDemo";
+import LineDemo from "./examples/LineDemo";
+import PointsDemo from "./examples/PointsDemo";
 
 const App = () => {
   return (
@@ -18,7 +24,13 @@ const App = () => {
       {/* <SVGNotation /> */}
       {/* <PathDemo /> */}
       {/* <TrimSVGPath /> */}
-      <FillTypeDemo />
+      {/* <FillTypeDemo /> */}
+      {/* <RectDemo /> */}
+      {/* <RoundedRectDemo /> */}
+      {/* <CustomRoundedRectDemo /> */}
+      {/* <DiffRectDemo /> */}
+      {/* <LineDemo /> */}
+      <PointsDemo />
     </SafeAreaView>
   );
 };
