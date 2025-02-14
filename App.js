@@ -1,48 +1,33 @@
 import {
   Canvas,
   Circle,
+  Fill,
   Group,
-  LinearGradient,
-  Paint,
-  Skia,
-  vec,
+  RoundedRect,
 } from "@shopify/react-native-skia";
 import { SafeAreaView, StyleSheet, View, ViewComponent } from "react-native";
+import PaintProperties from "./PaintProperties";
+import SimpleTransformation from "./SimpleTransformation";
+import OriginTransformation from "./OriginTransformation";
+import ClipRectangle from "./ClipRectangle";
+import ClipRoundedRectangle from "./ClipRoundedRectangle";
+import ClipPath from "./ClipPath";
+import InvertClip from "./InvertClip";
+import LayerEffect from "./LayerEffect";
+import SVGFitBox from "./FitBox";
 
-const width = 256;
-const height = 650;
-const strokeWidth = 30;
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Canvas style={{ width, height }}>
-        <Group color="red">
-          <Circle c={vec(100, 150)} r={100} />
-        </Group>
-        <Group color={0xffff0000}>
-          <Circle c={vec(100, 320)} r={50} />
-        </Group>
-        <Group color="hsl(120, 100%, 50%)">
-          <Circle c={vec(100, 450)} r={50} />
-        </Group>
-        <Group opacity={0.5}>
-          <Circle c={vec(100, 580)} r={50} color="red" />
-          <Circle
-            c={vec(100, 580)}
-            r={50}
-            color="lightblue"
-            style="stroke"
-            strokeWidth={strokeWidth}
-          />
-          <Circle
-            c={vec(100, 580)}
-            r={50}
-            color="mint"
-            style="stroke"
-            strokeWidth={strokeWidth / 2}
-          />
-        </Group>
-      </Canvas>
+      {/* <PaintProperties /> */}
+      {/* <SimpleTransformation /> */}
+      {/* <OriginTransformation /> */}
+      {/* <ClipRectangle /> */}
+      {/* <ClipRoundedRectangle /> */}
+      {/* <ClipPath /> */}
+      {/* <InvertClip /> */}
+      {/* <LayerEffect /> */}
+      <SVGFitBox />
     </SafeAreaView>
   );
 };
