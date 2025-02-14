@@ -13,7 +13,7 @@ const padding = 32;
 const r = 8;
 
 const ClipRoundedRectangle = () => {
-  const image = useImage(require("./assets/oslo.jpg"));
+  const image = useImage(require("../assets/oslo.jpg"));
   const roundedRect = rrect(
     rect(padding, padding, size - padding * 2, size - padding * 2),
     r,

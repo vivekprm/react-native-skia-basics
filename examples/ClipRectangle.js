@@ -14,7 +14,7 @@ const size = 256;
 const padding = 32;
 
 const ClipRectangle = () => {
-  const image = useImage(require("./assets/oslo.jpg"));
+  const image = useImage(require("../assets/oslo.jpg"));
   const rct = rect(padding, padding, size - padding * 2, size - padding * 2);
   return (
     <Canvas style={{ width, height }}>

@@ -1,20 +1,7 @@
-import {
-  Canvas,
-  Circle,
-  Fill,
-  Group,
-  RoundedRect,
-} from "@shopify/react-native-skia";
-import { SafeAreaView, StyleSheet, View, ViewComponent } from "react-native";
-import PaintProperties from "./PaintProperties";
-import SimpleTransformation from "./SimpleTransformation";
-import OriginTransformation from "./OriginTransformation";
-import ClipRectangle from "./ClipRectangle";
-import ClipRoundedRectangle from "./ClipRoundedRectangle";
-import ClipPath from "./ClipPath";
-import InvertClip from "./InvertClip";
-import LayerEffect from "./LayerEffect";
-import SVGFitBox from "./FitBox";
+import { SafeAreaView, StyleSheet } from "react-native";
+import PathDemo from "./examples/PathDemo";
+import TrimSVGPath from "./examples/TrimSVGPath";
+import FillTypeDemo from "./examples/FillTypeDemo";
 
 const App = () => {
   return (
@@ -27,7 +14,11 @@ const App = () => {
       {/* <ClipPath /> */}
       {/* <InvertClip /> */}
       {/* <LayerEffect /> */}
-      <SVGFitBox />
+      {/* <SVGFitBox /> */}
+      {/* <SVGNotation /> */}
+      {/* <PathDemo /> */}
+      {/* <TrimSVGPath /> */}
+      <FillTypeDemo />
     </SafeAreaView>
   );
 };
