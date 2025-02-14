@@ -1,25 +1,83 @@
-import { useEffect } from "react";
-import { Canvas, useCanvasRef, Circle } from "@shopify/react-native-skia";
+import {
+  Canvas,
+  Circle,
+  Group,
+  LinearGradient,
+  Paint,
+  Skia,
+  vec,
+} from "@shopify/react-native-skia";
+import { SafeAreaView, StyleSheet, View, ViewComponent } from "react-native";
+
+const width = 256;
+const height = 256;
+
 const App = () => {
-  const ref = useCanvasRef();
-  useEffect(() => {
-    setTimeout(() => {
-      // you can pass an optional rectangle
-      // to only save part of the image
-      const image = ref.current?.makeImageSnapshot();
-      if (image) {
-        // you can use image in an <Image> component
-        // Or save to file using encodeToBytes -> Uint8Array
-        const bytes = image.encodeToBytes();
-        console.log(bytes);
-      }
-    }, 1000);
-  });
+  const strokeWidth = 50;
+  const c = vec(width / 2, height / 2);
+  const r = (width - strokeWidth) / 2;
+  const r1 = width / 6;
+  const r2 = width / 4;
+  const r3 = width / 4;
+  const paint = Skia.Paint();
+  paint.setColor(Skia.Color("lightblue"));
   return (
-    <Canvas style={{ flex: 1 }} ref={ref}>
-      <Circle r={128} cx={128} cy={128} color="red" />
-    </Canvas>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Canvas style={{ width, height }}>
+          <Circle c={c} r={r} color="red">
+            <Paint color="green" />
+            <Paint color="#9f9009" style="stroke" strokeWidth={strokeWidth} />
+            <Paint
+              color="#abe6d8"
+              style="stroke"
+              strokeWidth={strokeWidth / 2}
+            />
+          </Circle>
+        </Canvas>
+      </View>
+      <View>
+        <Canvas style={{ width, height }}>
+          <Group color="lightblue">
+            <Circle cx={r1} cy={r1} r={r1} />
+            <Group style="stroke" strokeWidth={10}>
+              <Circle cx={3 * r1} cy={2 * r1} r={r1} />
+            </Group>
+          </Group>
+        </Canvas>
+      </View>
+      <View>
+        <Canvas style={{ width, height }}>
+          <Circle cx={r2} cy={r2} r={r2}>
+            <LinearGradient
+              start={vec(0, 0)}
+              end={vec(2 * r2, 2 * r2)}
+              colors={["#00ff87", "#60efff"]}
+            />
+          </Circle>
+          <Group>
+            <LinearGradient
+              start={vec(2 * r2, 2 * r2)}
+              end={vec(4 * r2, 4 * r2)}
+              colors={["#0061ff", "#60efff"]}
+            />
+            <Circle cx={3 * r2} cy={2 * r2} r={r2} />
+          </Group>
+        </Canvas>
+      </View>
+      <View>
+        <Canvas style={{ width, height }}>
+          <Circle paint={paint} cx={r3} cy={r3} r={r3} />
+        </Canvas>
+      </View>
+    </SafeAreaView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+  },
+});
 export default App;

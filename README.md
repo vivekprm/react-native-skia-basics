@@ -223,3 +223,125 @@ export const useTheme = () => {
   return theme;
 };
 ```
+
+# Painting
+Anytime you draw something in Skia, you want to specify what color it is, how it blends with the background, or what style to draw it in. We call these painting attributes. And in React Native Skia, these attributes can be specified as properties or as children of a drawing component (```<Rect />```, or ```<Circle />``` for instance) or a ```<Group />```. There is also a ```<Paint />``` component which can be assigned directly to a drawing or group via its reference.
+
+The following painting attributes can be assigned as properties:
+- [color](https://shopify.github.io/react-native-skia/docs/paint/properties#color)
+- [blendMode](https://shopify.github.io/react-native-skia/docs/paint/properties#blendmode)
+- [style](https://shopify.github.io/react-native-skia/docs/paint/properties#style)
+- [strokeWidth](https://shopify.github.io/react-native-skia/docs/paint/properties#strokewidth)
+- [strokeJoin](https://shopify.github.io/react-native-skia/docs/paint/properties#strokejoin)
+- [strokeCap](https://shopify.github.io/react-native-skia/docs/paint/properties#strokecap)
+- [strokeMiter](https://shopify.github.io/react-native-skia/docs/paint/properties#strokemiter)
+- [opacity](https://shopify.github.io/react-native-skia/docs/paint/properties#opacity)
+- [antiAlias](https://shopify.github.io/react-native-skia/docs/paint/properties#antialias)
+
+The following painting attributes can be assigned as children:
+- [Shaders](https://shopify.github.io/react-native-skia/docs/shaders/overview)
+- [Image Filters](https://shopify.github.io/react-native-skia/docs/image-filters/overview)
+- [Color Filters](https://shopify.github.io/react-native-skia/docs/color-filters)
+- [Mask Filters](https://shopify.github.io/react-native-skia/docs/mask-filters)
+- [Path Effects](https://shopify.github.io/react-native-skia/docs/path-effects)
+
+## Fills and Strokes
+In Skia, a paint has a style property to indicate whether it is a fill or a stroke paint. When drawing something, you can pass Paint components as children to add strokes and fills. In the example below, the circle has one light blue fill and two stroke paints.
+
+```js
+import {Canvas, Circle, Paint, vec} from "@shopify/react-native-skia";
+ 
+const width = 256;
+const height = 256;
+ 
+export const PaintDemo = () => {
+  const strokeWidth = 10;
+  const c = vec(width / 2, height / 2);
+  const r = (width - strokeWidth) / 2;
+  return (
+    <Canvas style={{ width, height}}>
+       <Circle c={c} r={r} color="red">
+        <Paint color="lightblue" />
+        <Paint color="#adbce6" style="stroke" strokeWidth={strokeWidth} />
+        <Paint color="#ade6d8" style="stroke" strokeWidth={strokeWidth / 2} />
+      </Circle>
+    </Canvas>
+  );
+};
+```
+
+## Inheritance
+Descendants inherit the paint attributes. In the example below, the first circle will be filled with a light blue color, and the second circle will have a light blue stroke.
+
+```js
+import {Canvas, Circle, Paint, Group} from "@shopify/react-native-skia";
+ 
+const width = 256;
+const height = 256;
+ 
+export const PaintDemo = () => {
+  const r = width / 6;
+  return (
+    <Canvas style={{ width, height }}>
+      <Group color="lightblue">
+        <Circle cx={r} cy={r} r={r} />
+        <Group style="stroke" strokeWidth={10}>
+          <Circle cx={3 * r} cy={3 * r} r={r} />
+        </Group>
+      </Group>
+    </Canvas>
+  );
+};
+```
+
+Complex painting attributes like a shader or an image filter can be passed as children to a group or a drawing.
+
+```js
+import {Canvas, Circle, Group, LinearGradient, vec} from "@shopify/react-native-skia";
+ 
+const width = 256;
+const height = 256;
+ 
+export const PaintDemo = () => {
+  const r = width/2;
+  return (
+    <Canvas style={{ width, height }}>
+      <Circle cx={r} cy={r} r={r}>
+        <LinearGradient
+          start={vec(0, 0)}
+          end={vec(2 * r, 2 * r)}
+          colors={["#00ff87", "#60efff"]}
+        />
+      </Circle>
+      <Group>
+        <LinearGradient
+          start={vec(2 * r, 2 * r)}
+          end={vec(4 * r, 4 * r)}
+          colors={["#0061ff", "#60efff"]}
+        />
+        <Circle cx={3 * r} cy={3 * r} r={r} />
+      </Group>
+    </Canvas>
+  );
+};
+```
+
+## Manual Paint Assignment
+Finally, we can assign a ref to a Paint component for later use.
+
+```js
+import {Canvas, Circle, Paint, Skia} from "@shopify/react-native-skia";
+const width = 256;
+const height = 256;
+const r = width / 2;
+const paint = Skia.Paint();
+paint.setColor(Skia.Color("lightblue"));
+ 
+export const PaintDemo = () => {
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <Circle paint={paint} cx={r} cy={r} r={r} />
+    </Canvas>
+  );
+};
+```
