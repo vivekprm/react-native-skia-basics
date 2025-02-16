@@ -8,6 +8,8 @@ import CustomRoundedRectDemo from "./examples/CustomRoundedRectDemo";
 import DiffRectDemo from "./examples/DiffRectDemo";
 import LineDemo from "./examples/LineDemo";
 import PointsDemo from "./examples/PointsDemo";
+import VerticesDemo from "./examples/VerticesDemo";
+import IndicesDemo from "./examples/IndicesDemo";
 
 const App = () => {
   return (
@@ -30,7 +32,8 @@ const App = () => {
       {/* <CustomRoundedRectDemo /> */}
       {/* <DiffRectDemo /> */}
       {/* <LineDemo /> */}
-      <PointsDemo />
+      {/* <PointsDemo /> */}
+      <IndicesDemo />
     </SafeAreaView>
   );
 };
