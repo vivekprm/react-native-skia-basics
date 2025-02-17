@@ -16,6 +16,7 @@ import BlurPictureDemo from "./examples/BlurPictureDemo";
 import SerializedPicture from "./examples/SerializedPicture";
 import ImagesDemo from "./examples/ImagesDemo";
 import ImageSampling from "./examples/ImageSampling";
+import AnimatedImagesDemo from "./examples/AnimatedImages";
 
 const App = () => {
   return (
@@ -45,7 +46,8 @@ const App = () => {
       {/* <BlurPictureDemo /> */}
       {/* <SerializedPicture /> */}
       {/* <ImagesDemo /> */}
-      <ImageSampling />
+      {/* <ImageSampling /> */}
+      <AnimatedImagesDemo />
     </SafeAreaView>
   );
 };
