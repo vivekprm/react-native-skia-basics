@@ -14,6 +14,8 @@ import PatchDemo from "./examples/PatchDemo";
 import { PictureDemo } from "./examples/PictureDemo";
 import BlurPictureDemo from "./examples/BlurPictureDemo";
 import SerializedPicture from "./examples/SerializedPicture";
+import ImagesDemo from "./examples/ImagesDemo";
+import ImageSampling from "./examples/ImageSampling";
 
 const App = () => {
   return (
@@ -41,7 +43,9 @@ const App = () => {
       {/* <PatchDemo /> */}
       {/* <PictureDemo /> */}
       {/* <BlurPictureDemo /> */}
-      <SerializedPicture />
+      {/* <SerializedPicture /> */}
+      {/* <ImagesDemo /> */}
+      <ImageSampling />
     </SafeAreaView>
   );
 };
