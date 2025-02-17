@@ -10,6 +10,7 @@ import LineDemo from "./examples/LineDemo";
 import PointsDemo from "./examples/PointsDemo";
 import VerticesDemo from "./examples/VerticesDemo";
 import IndicesDemo from "./examples/IndicesDemo";
+import PatchDemo from "./examples/PatchDemo";
 
 const App = () => {
   return (
@@ -33,7 +34,8 @@ const App = () => {
       {/* <DiffRectDemo /> */}
       {/* <LineDemo /> */}
       {/* <PointsDemo /> */}
-      <IndicesDemo />
+      {/* <IndicesDemo /> */}
+      <PatchDemo />
     </SafeAreaView>
   );
 };
