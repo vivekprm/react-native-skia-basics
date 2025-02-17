@@ -11,6 +11,9 @@ import PointsDemo from "./examples/PointsDemo";
 import VerticesDemo from "./examples/VerticesDemo";
 import IndicesDemo from "./examples/IndicesDemo";
 import PatchDemo from "./examples/PatchDemo";
+import { PictureDemo } from "./examples/PictureDemo";
+import BlurPictureDemo from "./examples/BlurPictureDemo";
+import SerializedPicture from "./examples/SerializedPicture";
 
 const App = () => {
   return (
@@ -35,7 +38,10 @@ const App = () => {
       {/* <LineDemo /> */}
       {/* <PointsDemo /> */}
       {/* <IndicesDemo /> */}
-      <PatchDemo />
+      {/* <PatchDemo /> */}
+      {/* <PictureDemo /> */}
+      {/* <BlurPictureDemo /> */}
+      <SerializedPicture />
     </SafeAreaView>
   );
 };
