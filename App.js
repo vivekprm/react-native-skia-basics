@@ -36,6 +36,7 @@ import TextBlobDemo from "./examples/TextBlobDemo";
 import SimpleShaderDemo from "./examples/SimpleShaderDemo";
 import UniformShaderDemo from "./examples/UniformShaderDemo";
 import NestedShaderDemo from "./examples/NestedShaderDemo";
+import ImageShaderDemo from "./examples/ImageShaderDemo";
 
 const App = () => {
   return (
@@ -85,7 +86,8 @@ const App = () => {
       {/* <TextBlobDemo /> */}
       {/* <SimpleShaderDemo /> */}
       {/* <UniformShaderDemo /> */}
-      <NestedShaderDemo />
+      {/* <NestedShaderDemo /> */}
+      <ImageShaderDemo />
     </SafeAreaView>
   );
 };
