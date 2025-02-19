@@ -56,6 +56,7 @@ import { ImageFiltersRuntimeShaderDemo } from "./examples/ImageFiltersRuntimeSha
 import { ImageFiltersRuntimeShaderPixelDensity } from "./examples/ImageFiltersRuntimeShadersPixelDensity";
 import BackdropFilterDemo from "./examples/BackdropFilterDemo";
 import BackdropBlurDemo from "./examples/BackdropBlurDemo";
+import MaskFilterBlurDemo from "./examples/MaskFilterBlurDemo";
 
 const App = () => {
   return (
@@ -125,7 +126,8 @@ const App = () => {
       {/* <ImageFiltersRuntimeShaderDemo /> */}
       {/* <ImageFiltersRuntimeShaderPixelDensity /> */}
       {/* <BackdropFilterDemo /> */}
-      <BackdropBlurDemo />
+      {/* <BackdropBlurDemo /> */}
+      <MaskFilterBlurDemo />
     </SafeAreaView>
   );
 };
