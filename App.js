@@ -41,6 +41,8 @@ import LinearGradientDemo from "./examples/LinearGradientDemo";
 import RadialGradientDemo from "./examples/RadialGradientDemo";
 import { TwoPointConicalGradientDemo } from "./examples/TwoPointConicalGradientDemo";
 import { SweepGradientDemo } from "./examples/SweepGradientDemo";
+import { FractalNoiseDemo } from "./examples/FractalNoiseDemo";
+import { TurbulenceDemo } from "./examples/TurbulenceDemo";
 
 const App = () => {
   return (
@@ -95,7 +97,9 @@ const App = () => {
       {/* <LinearGradientDemo /> */}
       {/* <RadialGradientDemo /> */}
       {/* <TwoPointConicalGradientDemo /> */}
-      <SweepGradientDemo />
+      {/* <SweepGradientDemo /> */}
+      {/* <FractalNoiseDemo /> */}
+      <TurbulenceDemo />
     </SafeAreaView>
   );
 };
