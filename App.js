@@ -57,6 +57,10 @@ import { ImageFiltersRuntimeShaderPixelDensity } from "./examples/ImageFiltersRu
 import BackdropFilterDemo from "./examples/BackdropFilterDemo";
 import BackdropBlurDemo from "./examples/BackdropBlurDemo";
 import MaskFilterBlurDemo from "./examples/MaskFilterBlurDemo";
+import MatrixColorFilter from "./examples/MatrixColorFilter";
+import MatrixColorBlendFilter from "./examples/MatrixColorBlendFilter";
+import MatrixColorLerpFilter from "./examples/MatrixColorLerpFilter";
+import MatrixLinearToSRGBGammaFilter from "./examples/MatrixLinearToSRGBGammaFilter";
 
 const App = () => {
   return (
@@ -127,7 +131,12 @@ const App = () => {
       {/* <ImageFiltersRuntimeShaderPixelDensity /> */}
       {/* <BackdropFilterDemo /> */}
       {/* <BackdropBlurDemo /> */}
-      <MaskFilterBlurDemo />
+      {/* <MaskFilterBlurDemo /> */}
+      {/* <MatrixColorFilter /> */}
+      {/* <MatrixColorBlendFilter /> */}
+      {/* <MatrixColorLerpFilter /> */}
+      {/* <MatrixLinearToSRGBGammaFilter /> */}
+      <MatrixLinearToSRGBGammaFilter />
     </SafeAreaView>
   );
 };
