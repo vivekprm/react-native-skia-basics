@@ -50,6 +50,8 @@ import ImageFiltersDropShadow from "./examples/ImageFiltersDropShadow";
 import ImageFiltersInnerShadow from "./examples/ImageFiltersInnerShadow";
 import ImageFiltersBlurDemo from "./examples/ImageFiltersBlurDemo";
 import ImageFiltersDisplacementMapDemo from "./examples/ImageFiltersDisplacementMapDemo";
+import ImageFiltersOffsetDemo from "./examples/ImageFiltersOffsetDemo";
+import { ImageFiltersMorphologyDemo } from "./examples/ImageFiltersMorphologyDemo";
 
 const App = () => {
   return (
@@ -113,7 +115,9 @@ const App = () => {
       {/* <ImageFiltersDropShadow /> */}
       {/* <ImageFiltersInnerShadow /> */}
       {/* <ImageFiltersBlurDemo /> */}
-      <ImageFiltersDisplacementMapDemo />
+      {/* <ImageFiltersDisplacementMapDemo /> */}
+      {/* <ImageFiltersOffsetDemo /> */}
+      <ImageFiltersMorphologyDemo />
     </SafeAreaView>
   );
 };
