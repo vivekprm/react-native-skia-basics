@@ -37,6 +37,10 @@ import SimpleShaderDemo from "./examples/SimpleShaderDemo";
 import UniformShaderDemo from "./examples/UniformShaderDemo";
 import NestedShaderDemo from "./examples/NestedShaderDemo";
 import ImageShaderDemo from "./examples/ImageShaderDemo";
+import LinearGradientDemo from "./examples/LinearGradientDemo";
+import RadialGradientDemo from "./examples/RadialGradientDemo";
+import { TwoPointConicalGradientDemo } from "./examples/TwoPointConicalGradientDemo";
+import { SweepGradientDemo } from "./examples/SweepGradientDemo";
 
 const App = () => {
   return (
@@ -87,7 +91,11 @@ const App = () => {
       {/* <SimpleShaderDemo /> */}
       {/* <UniformShaderDemo /> */}
       {/* <NestedShaderDemo /> */}
-      <ImageShaderDemo />
+      {/* <ImageShaderDemo /> */}
+      {/* <LinearGradientDemo /> */}
+      {/* <RadialGradientDemo /> */}
+      {/* <TwoPointConicalGradientDemo /> */}
+      <SweepGradientDemo />
     </SafeAreaView>
   );
 };
