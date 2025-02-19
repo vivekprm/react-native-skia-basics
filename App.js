@@ -45,6 +45,7 @@ import { FractalNoiseDemo } from "./examples/FractalNoiseDemo";
 import { TurbulenceDemo } from "./examples/TurbulenceDemo";
 import { BlendDemo } from "./examples/BlendDemo";
 import { ColorShaderDemo } from "./examples/ColorShaderDemo";
+import ComposeImageFilter from "./examples/ComposeImageFilter";
 
 const App = () => {
   return (
@@ -103,7 +104,8 @@ const App = () => {
       {/* <FractalNoiseDemo /> */}
       {/* <TurbulenceDemo /> */}
       {/* <BlendDemo /> */}
-      <ColorShaderDemo />
+      {/* <ColorShaderDemo /> */}
+      <ComposeImageFilter />
     </SafeAreaView>
   );
 };
