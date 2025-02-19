@@ -48,6 +48,7 @@ import { ColorShaderDemo } from "./examples/ColorShaderDemo";
 import ComposeImageFilter from "./examples/ComposeImageFilter";
 import ImageFiltersDropShadow from "./examples/ImageFiltersDropShadow";
 import ImageFiltersInnerShadow from "./examples/ImageFiltersInnerShadow";
+import ImageFiltersBlurDemo from "./examples/ImageFiltersBlurDemo";
 
 const App = () => {
   return (
@@ -109,7 +110,8 @@ const App = () => {
       {/* <ColorShaderDemo /> */}
       {/* <ComposeImageFilter /> */}
       {/* <ImageFiltersDropShadow /> */}
-      <ImageFiltersInnerShadow />
+      {/* <ImageFiltersInnerShadow /> */}
+      <ImageFiltersBlurDemo />
     </SafeAreaView>
   );
 };
