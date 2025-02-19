@@ -33,6 +33,9 @@ import TextFontStylingDemo from "./examples/TextFontStylingDemo";
 import { TextGlyphsDemo } from "./examples/TextGlyphsDemo";
 import { TextPathDemo } from "./examples/TextPathDemo";
 import TextBlobDemo from "./examples/TextBlobDemo";
+import SimpleShaderDemo from "./examples/SimpleShaderDemo";
+import UniformShaderDemo from "./examples/UniformShaderDemo";
+import NestedShaderDemo from "./examples/NestedShaderDemo";
 
 const App = () => {
   return (
@@ -79,7 +82,10 @@ const App = () => {
       {/* <TextFontStylingDemo /> */}
       {/* <TextGlyphsDemo /> */}
       {/* <TextPathDemo /> */}
-      <TextBlobDemo />
+      {/* <TextBlobDemo /> */}
+      {/* <SimpleShaderDemo /> */}
+      {/* <UniformShaderDemo /> */}
+      <NestedShaderDemo />
     </SafeAreaView>
   );
 };
