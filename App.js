@@ -49,6 +49,7 @@ import ComposeImageFilter from "./examples/ComposeImageFilter";
 import ImageFiltersDropShadow from "./examples/ImageFiltersDropShadow";
 import ImageFiltersInnerShadow from "./examples/ImageFiltersInnerShadow";
 import ImageFiltersBlurDemo from "./examples/ImageFiltersBlurDemo";
+import ImageFiltersDisplacementMapDemo from "./examples/ImageFiltersDisplacementMapDemo";
 
 const App = () => {
   return (
@@ -111,7 +112,8 @@ const App = () => {
       {/* <ComposeImageFilter /> */}
       {/* <ImageFiltersDropShadow /> */}
       {/* <ImageFiltersInnerShadow /> */}
-      <ImageFiltersBlurDemo />
+      {/* <ImageFiltersBlurDemo /> */}
+      <ImageFiltersDisplacementMapDemo />
     </SafeAreaView>
   );
 };
