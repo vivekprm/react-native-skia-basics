@@ -21,6 +21,7 @@ import ImageSVGDemo from "./examples/ImageSVGDemo";
 import SVGOpacityDemo from "./examples/SVGOpacityDemo";
 import SVGBlurDemo from "./examples/SVGBlurDemo";
 import SnapshotDemo from "./examples/SnapshotDemo";
+import { VideoExample } from "./examples/VideoExample";
 
 const App = () => {
   return (
@@ -55,7 +56,8 @@ const App = () => {
       {/* <ImageSVGDemo /> */}
       {/* <SVGOpacityDemo /> */}
       {/* <SVGBlurDemo /> */}
-      <SnapshotDemo />
+      {/* <SnapshotDemo /> */}
+      <VideoExample />
     </SafeAreaView>
   );
 };

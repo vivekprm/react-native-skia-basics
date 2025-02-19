@@ -1790,3 +1790,64 @@ const Demo = () => {
   )
 };
 ```
+
+# Video
+React Native Skia provides a way to load video frames as images, enabling rich multimedia experiences within your applications. A video frame can be used anywhere a Skia image is accepted: ```Image```, ```ImageShader```, and ```Atlas```. ```Videos``` are also supported on Web.
+
+## Requirements
+- Reanimated version 3 or higher.
+- Android: API level 26 or higher.
+
+## Example
+Here is an example of how to use the video support in React Native Skia. This example demonstrates how to load and display video frames within a canvas, applying a color matrix for visual effects. Tapping the screen will pause and play the video.
+
+The video can be a remote (```http://...```) or local URL (```file://```), as well as a [video from the bundle](https://shopify.github.io/react-native-skia/docs/video#using-assets).
+
+```js
+import React from "react";
+import {
+  Canvas,
+  ColorMatrix,
+  Fill,
+  ImageShader,
+  useVideo
+} from "@shopify/react-native-skia";
+import { Pressable, useWindowDimensions } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
+ 
+export const VideoExample = () => {
+  const paused = useSharedValue(false);
+  const { width, height } = useWindowDimensions();
+  const { currentFrame } = useVideo(
+    "https://bit.ly/skia-video",
+    {
+      paused,
+    }
+  );
+  return (
+    <Pressable
+      style={{ flex: 1 }}
+      onPress={() => (paused.value = !paused.value)}
+    >
+      <Canvas style={{ flex: 1 }}>
+        <Fill>
+          <ImageShader
+            image={currentFrame}
+            x={0}
+            y={0}
+            width={width}
+            height={height}
+            fit="cover"
+          />
+          <ColorMatrix
+            matrix={[
+              0.95, 0, 0, 0, 0.05, 0.65, 0, 0, 0, 0.15, 0.15, 0, 0, 0, 0.5, 0,
+              0, 0, 1, 0,
+            ]}
+          />
+        </Fill>
+      </Canvas>
+    </Pressable>
+  );
+};
+```
