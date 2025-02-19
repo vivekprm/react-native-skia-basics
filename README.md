@@ -3391,3 +3391,69 @@ export const RuntimeShaderDemo = () => {
   );
 };
 ```
+
+# Backdrop Filters
+In Skia, backdrop filters are equivalent to their [CSS counterpart](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter). They allow you to apply image filters such as blurring to the area behind a [clipping mask](https://shopify.github.io/react-native-skia/docs/group#clipping-operations). A backdrop filter extends the [Group component](https://shopify.github.io/react-native-skia/docs/group#clipping-operations). All properties from the [group component](https://shopify.github.io/react-native-skia/docs/group) can be applied to a backdrop filter.
+
+The [clipping mask](https://shopify.github.io/react-native-skia/docs/group#clipping-operations) will be used to restrict the area of the backdrop filter.
+
+## Example
+```js
+import {
+  Canvas,
+  BackdropFilter,
+  Image,
+  ColorMatrix,
+  useImage,
+} from "@shopify/react-native-skia";
+ 
+// https://kazzkiq.github.io/svg-color-filter/
+const BLACK_AND_WHITE = [
+  0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0,
+];
+ 
+const Filter = () => {
+  const image = useImage(require("./assets/oslo.jpg"));
+ 
+  return (
+    <Canvas style={{ width: 256, height: 256 }}>
+      <Image image={image} x={0} y={0} width={256} height={256} fit="cover" />
+      <BackdropFilter
+        clip={{ x: 0, y: 128, width: 256, height: 128 }}
+        filter={<ColorMatrix matrix={BLACK_AND_WHITE} />}
+      />
+    </Canvas>
+  );
+};
+```
+
+### Backdrop Blur
+Creates a backdrop blur. All properties from the [group component](https://shopify.github.io/react-native-skia/docs/group) can be applied to a backdrop filter.
+
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| blur | number | Blur radius |
+
+#### Example
+```js
+import {
+  Canvas,
+  Fill,
+  Image,
+  BackdropBlur,
+  useImage,
+} from "@shopify/react-native-skia";
+ 
+const Filter = () => {
+  const image = useImage(require("./assets/oslo.jpg"));
+ 
+  return (
+    <Canvas style={{ width: 256, height: 256 }}>
+      <Image image={image} x={0} y={0} width={256} height={256} fit="cover" />
+      <BackdropBlur blur={4} clip={{ x: 0, y: 128, width: 256, height: 128 }}>
+        <Fill color="rgba(0, 0, 0, 0.2)" />
+      </BackdropBlur>
+    </Canvas>
+  );
+};
+```

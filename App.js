@@ -54,6 +54,8 @@ import ImageFiltersOffsetDemo from "./examples/ImageFiltersOffsetDemo";
 import { ImageFiltersMorphologyDemo } from "./examples/ImageFiltersMorphologyDemo";
 import { ImageFiltersRuntimeShaderDemo } from "./examples/ImageFiltersRuntimeShaderDemo";
 import { ImageFiltersRuntimeShaderPixelDensity } from "./examples/ImageFiltersRuntimeShadersPixelDensity";
+import BackdropFilterDemo from "./examples/BackdropFilterDemo";
+import BackdropBlurDemo from "./examples/BackdropBlurDemo";
 
 const App = () => {
   return (
@@ -121,7 +123,9 @@ const App = () => {
       {/* <ImageFiltersOffsetDemo /> */}
       {/* <ImageFiltersMorphologyDemo /> */}
       {/* <ImageFiltersRuntimeShaderDemo /> */}
-      <ImageFiltersRuntimeShaderPixelDensity />
+      {/* <ImageFiltersRuntimeShaderPixelDensity /> */}
+      {/* <BackdropFilterDemo /> */}
+      <BackdropBlurDemo />
     </SafeAreaView>
   );
 };
