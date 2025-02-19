@@ -31,6 +31,7 @@ import ParagraphTextStylingDemo from "./examples/ParagraphTextStylingDemo";
 import { SimpleTextDemo } from "./examples/SimpleTextDemo";
 import TextFontStylingDemo from "./examples/TextFontStylingDemo";
 import { TextGlyphsDemo } from "./examples/TextGlyphsDemo";
+import { TextPathDemo } from "./examples/TextPathDemo";
 
 const App = () => {
   return (
@@ -75,7 +76,8 @@ const App = () => {
       {/* <ParagraphTextStylingDemo /> */}
       {/* <SimpleTextDemo /> */}
       {/* <TextFontStylingDemo /> */}
-      <TextGlyphsDemo />
+      {/* <TextGlyphsDemo /> */}
+      <TextPathDemo />
     </SafeAreaView>
   );
 };
