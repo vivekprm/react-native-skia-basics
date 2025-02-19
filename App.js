@@ -32,6 +32,7 @@ import { SimpleTextDemo } from "./examples/SimpleTextDemo";
 import TextFontStylingDemo from "./examples/TextFontStylingDemo";
 import { TextGlyphsDemo } from "./examples/TextGlyphsDemo";
 import { TextPathDemo } from "./examples/TextPathDemo";
+import TextBlobDemo from "./examples/TextBlobDemo";
 
 const App = () => {
   return (
@@ -77,7 +78,8 @@ const App = () => {
       {/* <SimpleTextDemo /> */}
       {/* <TextFontStylingDemo /> */}
       {/* <TextGlyphsDemo /> */}
-      <TextPathDemo />
+      {/* <TextPathDemo /> */}
+      <TextBlobDemo />
     </SafeAreaView>
   );
 };
