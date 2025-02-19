@@ -43,6 +43,8 @@ import { TwoPointConicalGradientDemo } from "./examples/TwoPointConicalGradientD
 import { SweepGradientDemo } from "./examples/SweepGradientDemo";
 import { FractalNoiseDemo } from "./examples/FractalNoiseDemo";
 import { TurbulenceDemo } from "./examples/TurbulenceDemo";
+import { BlendDemo } from "./examples/BlendDemo";
+import { ColorShaderDemo } from "./examples/ColorShaderDemo";
 
 const App = () => {
   return (
@@ -99,7 +101,9 @@ const App = () => {
       {/* <TwoPointConicalGradientDemo /> */}
       {/* <SweepGradientDemo /> */}
       {/* <FractalNoiseDemo /> */}
-      <TurbulenceDemo />
+      {/* <TurbulenceDemo /> */}
+      {/* <BlendDemo /> */}
+      <ColorShaderDemo />
     </SafeAreaView>
   );
 };
