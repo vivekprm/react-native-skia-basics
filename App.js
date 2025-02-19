@@ -52,6 +52,8 @@ import ImageFiltersBlurDemo from "./examples/ImageFiltersBlurDemo";
 import ImageFiltersDisplacementMapDemo from "./examples/ImageFiltersDisplacementMapDemo";
 import ImageFiltersOffsetDemo from "./examples/ImageFiltersOffsetDemo";
 import { ImageFiltersMorphologyDemo } from "./examples/ImageFiltersMorphologyDemo";
+import { ImageFiltersRuntimeShaderDemo } from "./examples/ImageFiltersRuntimeShaderDemo";
+import { ImageFiltersRuntimeShaderPixelDensity } from "./examples/ImageFiltersRuntimeShadersPixelDensity";
 
 const App = () => {
   return (
@@ -117,7 +119,9 @@ const App = () => {
       {/* <ImageFiltersBlurDemo /> */}
       {/* <ImageFiltersDisplacementMapDemo /> */}
       {/* <ImageFiltersOffsetDemo /> */}
-      <ImageFiltersMorphologyDemo />
+      {/* <ImageFiltersMorphologyDemo /> */}
+      {/* <ImageFiltersRuntimeShaderDemo /> */}
+      <ImageFiltersRuntimeShaderPixelDensity />
     </SafeAreaView>
   );
 };

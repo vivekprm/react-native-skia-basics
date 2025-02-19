@@ -3305,3 +3305,89 @@ export const MorphologyDemo = () => {
   );
 };
 ```
+
+## Runtime Shader
+The ```RuntimeShader``` image filter allows you to write your own [Skia Shader](https://shopify.github.io/react-native-skia/docs/shaders/overview) as an image filter. This component receives the currently filtered image as a shader uniform (or the implicit source image if no children are provided).
+
+**info**
+Because ```RuntimeShader``` doesn't take into account the pixel density scaling, we recommend applying a technique known as ```supersampling```. See [below](https://shopify.github.io/react-native-skia/docs/image-filters/runtime-shader#pixel-density).
+
+| Name      | Type            | Description                               |
+| --------- | --------------- | ----------------------------------------- |
+| source    | SkRuntimeEffect | Shader to use as an image filter          |
+| children? | ImageFilter     | Optional image filter to be applied first |
+
+### Example
+The example below generates a circle with a green mint color. The circle is first drawn with the light blue color #add8e6, and the runtime shader switches the blue with the green channel: we get mint green #ade6d8.
+
+```js
+import {Canvas, Text, RuntimeShader, Skia, Group, Circle} from "@shopify/react-native-skia";
+ 
+const source = Skia.RuntimeEffect.Make(`
+uniform shader image;
+ 
+half4 main(float2 xy) {
+  return image.eval(xy).rbga;
+}
+`)!;
+ 
+export const RuntimeShaderDemo = () => {
+  const r = 128;
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <Group>
+        <RuntimeShader source={source} />
+        <Circle cx={r} cy={r} r={r} color="lightblue" />
+      </Group>
+    </Canvas>
+  );
+};
+```
+
+#### Pixel Density
+```RuntimeShader``` is not taking into account the pixel density scaling ([learn more why](https://issues.skia.org/issues/40044507)). To keep the image filter output crisp, We upscale the filtered drawing to the [pixel density of the app](https://reactnative.dev/docs/pixelratio). Once the drawing is filtered, we scale it back to the original size. This can be seen in the example below. These operations must be performed on a Skia layer via the ```layer``` property.
+
+```js
+import {Canvas, Text, RuntimeShader, Skia, Group, Circle, Paint, Fill, useFont} from "@shopify/react-native-skia";
+import {PixelRatio} from "react-native";
+ 
+const pd = PixelRatio.get();
+const source = Skia.RuntimeEffect.Make(`
+uniform shader image;
+ 
+half4 main(float2 xy) {
+  if (xy.x < 256 * ${pd}/2) {
+    return color;
+  }
+  return image.eval(xy).rbga;
+}
+`)!;
+ 
+export const RuntimeShaderDemo = () => {
+  const r = 128;
+  const font = useFont(require("./SF-Pro.ttf"), 24);
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <Group transform={[{ scale: 1 / pd }]}>
+        <Group
+          layer={
+            <Paint>
+              <RuntimeShader source={source} />
+            </Paint>
+          }
+          transform={[{ scale: pd }]}
+        >
+          <Fill color="#b7c9e2" />
+          <Text
+            text="Hello World"
+            x={16}
+            y={32}
+            color="#e38ede"
+            font={font}
+          />
+        </Group>
+      </Group>
+    </Canvas>
+  );
+};
+```
