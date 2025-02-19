@@ -46,6 +46,8 @@ import { TurbulenceDemo } from "./examples/TurbulenceDemo";
 import { BlendDemo } from "./examples/BlendDemo";
 import { ColorShaderDemo } from "./examples/ColorShaderDemo";
 import ComposeImageFilter from "./examples/ComposeImageFilter";
+import ImageFiltersDropShadow from "./examples/ImageFiltersDropShadow";
+import ImageFiltersInnerShadow from "./examples/ImageFiltersInnerShadow";
 
 const App = () => {
   return (
@@ -105,7 +107,9 @@ const App = () => {
       {/* <TurbulenceDemo /> */}
       {/* <BlendDemo /> */}
       {/* <ColorShaderDemo /> */}
-      <ComposeImageFilter />
+      {/* <ComposeImageFilter /> */}
+      {/* <ImageFiltersDropShadow /> */}
+      <ImageFiltersInnerShadow />
     </SafeAreaView>
   );
 };
