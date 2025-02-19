@@ -17,6 +17,9 @@ import SerializedPicture from "./examples/SerializedPicture";
 import ImagesDemo from "./examples/ImagesDemo";
 import ImageSampling from "./examples/ImageSampling";
 import AnimatedImagesDemo from "./examples/AnimatedImages";
+import ImageSVGDemo from "./examples/ImageSVGDemo";
+import SVGOpacityDemo from "./examples/SVGOpacityDemo";
+import SVGBlurDemo from "./examples/SVGBlurDemo";
 
 const App = () => {
   return (
@@ -47,7 +50,10 @@ const App = () => {
       {/* <SerializedPicture /> */}
       {/* <ImagesDemo /> */}
       {/* <ImageSampling /> */}
-      <AnimatedImagesDemo />
+      {/* <AnimatedImagesDemo /> */}
+      {/* <ImageSVGDemo /> */}
+      {/* <SVGOpacityDemo /> */}
+      <SVGBlurDemo />
     </SafeAreaView>
   );
 };
