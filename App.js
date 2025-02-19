@@ -20,6 +20,7 @@ import AnimatedImagesDemo from "./examples/AnimatedImages";
 import ImageSVGDemo from "./examples/ImageSVGDemo";
 import SVGOpacityDemo from "./examples/SVGOpacityDemo";
 import SVGBlurDemo from "./examples/SVGBlurDemo";
+import SnapshotDemo from "./examples/SnapshotDemo";
 
 const App = () => {
   return (
@@ -53,7 +54,8 @@ const App = () => {
       {/* <AnimatedImagesDemo /> */}
       {/* <ImageSVGDemo /> */}
       {/* <SVGOpacityDemo /> */}
-      <SVGBlurDemo />
+      {/* <SVGBlurDemo /> */}
+      <SnapshotDemo />
     </SafeAreaView>
   );
 };
