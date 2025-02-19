@@ -28,6 +28,8 @@ import TextEffectsDemo from "./examples/TextEffectsDemo";
 import ParagraphBoundingBoxDemo from "./examples/ParagraphBoundingBoxDemo";
 import ParagraphStylingDemo from "./examples/ParagraphStylingDemo";
 import ParagraphTextStylingDemo from "./examples/ParagraphTextStylingDemo";
+import { SimpleTextDemo } from "./examples/SimpleTextDemo";
+import TextFontStylingDemo from "./examples/TextFontStylingDemo";
 
 const App = () => {
   return (
@@ -68,8 +70,10 @@ const App = () => {
       {/* <ParagraphPaintDemo /> */}
       {/* <TextEffectsDemo /> */}
       {/* <ParagraphBoundingBoxDemo /> */}
-      <ParagraphStylingDemo />
+      {/* <ParagraphStylingDemo /> */}
       {/* <ParagraphTextStylingDemo /> */}
+      {/* <SimpleTextDemo /> */}
+      <TextFontStylingDemo />
     </SafeAreaView>
   );
 };

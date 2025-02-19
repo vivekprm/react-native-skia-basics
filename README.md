@@ -2159,7 +2159,7 @@ export const Demo = () => {
 };
 ```
 
-## Paragraph Bounding Box
+### Paragraph Bounding Box
 Before getting the paragraph height and width, you need to compute its layout using ```layout()``` and once done, you can invoke ```getHeight()``` for the height and ```getLongestLine()``` for the width.
 
 ```js
@@ -2191,7 +2191,7 @@ const MyParagraph = () => {
 };
 ```
 
-## Fonts
+### Fonts
 By default, the paragraph API will use the system fonts. You can also use custom fonts with this API was well.
 
 The ```useFonts``` hooks allows you to load custom fonts to be used for your Skia drawing. The font files should be organized by family names. For example:
@@ -2215,7 +2215,7 @@ if (!fontMgr) {
 
 You can also list the available system fonts via ```listFontFamilies()``` function.
 
-## Styling Paragraphs
+### Styling Paragraphs
 These properties define the overall layout and behavior of a paragraph.
 
 | Property             | Description                                                            |
@@ -2257,7 +2257,7 @@ const MyParagraph = () => {
 };
 ```
 
-## Text Style Properties
+### Text Style Properties
 These properties are used to style specific segments of text within a paragraph.
 
 | Property            | Description                                                         |
@@ -2326,3 +2326,147 @@ const MyParagraph = () => {
   return <Paragraph paragraph={paragraph} x={0} y={0} width={300} />;
 };
 ```
+
+## Text
+The text component can be used to draw a simple text. Please note that the y origin of the Text is the bottom of the text, not the top.
+
+| Name | Type   | Description                                   |
+| ---- | ------ | --------------------------------------------- |
+| text | string | Text to draw                                  |
+| font | SkFont | Font to use                                   |
+| x    | number | Left position of the text (default is 0)      |
+| y    | number | Bottom position the text (default is 0, the ) |
+
+### Simple Text
+```js
+import {Canvas, Text, useFont, Fill} from "@shopify/react-native-skia";
+ 
+export const HelloWorld = () => {
+  const fontSize = 32;
+  const font = useFont(require("./my-font.ttf"), fontSize);
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <Fill color="white" />
+      <Text
+        x={0}
+        y={fontSize}
+        text="Hello World"
+        font={font}
+      />
+    </Canvas>
+  );
+};
+```
+
+### Fonts
+Once the fonts are loaded, we provide a ```matchFont``` function that given a font style will return a font object that you can use directly.
+
+**info**
+For font matching we recommend using the [Paragraph API](https://shopify.github.io/react-native-skia/docs/text/paragraph/) instead. The APIs belows were made available before the Paragraph API was released.
+
+```js
+import {useFonts, Text, matchFont} from "@shopify/react-native-skia";
+ 
+const Demo = () => {
+  const fontMgr = useFonts({
+    Roboto: [
+      require("./Roboto-Medium.ttf"),
+      require("./Roboto-Regular.ttf"),
+      require("./Roboto-Bold.ttf"),
+    ]
+  });
+  if (!fontMgr) {
+    return null;
+  }
+  const fontStyle = {
+    fontFamily: "Roboto",
+    fontWeight: "bold",
+    fontSize: 16
+  } as const;
+  const font = matchFont(fontStyle, fontMgr);
+  return (
+    <Text text="Hello World" y={32} x={32} font={font} />
+  );
+};
+```
+
+### System Fonts
+System fonts are available via ```Skia.FontMgr.System()```. You can list system fonts via ```listFontFamilies``` function returns the list of available system font families. By default the function will list system fonts but you can pass an optional ```fontMgr``` object as parameter.
+
+```js
+import {listFontFamilies} from "@shopify/react-native-skia";
+ 
+console.log(listFontFamilies());
+```
+
+By default ```matchFont```, will match fonts from the system font manager:
+```js
+import {Platform} from "react-native";
+import {Canvas, Text, matchFont, Fill, Skia} from "@shopify/react-native-skia";
+ 
+const fontFamily = Platform.select({ ios: "Helvetica", default: "serif" });
+const fontStyle = {
+  fontFamily,
+  fontSize: 14,
+  fontStyle: "italic",
+  fontWeight: "bold",
+};
+const font = matchFont(fontStyle);
+ 
+export const HelloWorld = () => {
+  return (
+    <Canvas style={{ flex: 1 }}>
+      <Fill color="white" />
+      <Text
+        x={0}
+        y={fontStyle.fontSize}
+        text="Hello World"
+        font={font}
+      />
+    </Canvas>
+  );
+};
+```
+
+The ```fontStyle``` object can have the following list of optional attributes:
+- ```fontFamily```: The name of the font family.
+- ```fontSize```: The size of the font.
+- ```fontStyle```: The slant of the font. Can be normal, italic, or oblique.
+- ```fontWeight```: The weight of the font. Can be normal, bold, or any of 100, 200, 300, 400, 500, 600, 700, 800, 900.
+
+By default, ```matchFont``` uses the system font manager to match the font style. However, if you want to use your custom font manager, you can pass it as the second parameter to the ```matchFont``` function:
+
+```js
+import {matchFont, useFonts} from "@shopify/react-native-skia";
+ 
+const fontMgr = useFonts({
+  Roboto: [
+    require("../../Tests/assets/Roboto-Medium.ttf"),
+    require("../../Tests/assets/Roboto-Bold.ttf"),
+  ]
+});
+ 
+const font = matchFont(fontStyle, fontMgr);
+```
+
+### Low-level API
+The basic usage of the system font manager is as follows. These are the APIs used behind the scene by the ```matchFont``` function.
+```js
+import {Platform} from "react-native";
+import {Skia, FontStyle} from "@shopify/react-native-skia";
+ 
+const familyName = Platform.select({ ios: "Helvetica", default: "serif" });
+const fontSize = 32;
+// Get the system font manager
+const fontMgr = Skia.FontMgr.System();
+// The custom font manager is available via Skia.TypefaceFontProvider.Make()
+const customFontMgr = Skia.TypefaceFontProvider.Make();
+// typeface needs to be loaded via Skia.Data and instanciated via
+// Skia.Typeface.MakeFreeTypeFaceFromData()
+// customFontMgr.registerTypeface(customTypeFace, "Roboto");
+ 
+// Matching a font
+const typeface =  fontMgr.matchFamilyStyle(familyName, FontStyle.Bold);
+const font = Skia.Font(typeface, fontSize);
+```
+
