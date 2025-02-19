@@ -22,6 +22,12 @@ import SVGOpacityDemo from "./examples/SVGOpacityDemo";
 import SVGBlurDemo from "./examples/SVGBlurDemo";
 import SnapshotDemo from "./examples/SnapshotDemo";
 import { VideoExample } from "./examples/VideoExample";
+import ParagraphDemo from "./examples/ParagraphDemo";
+import ParagraphPaintDemo from "./examples/ParagraphPaintDemo";
+import TextEffectsDemo from "./examples/TextEffectsDemo";
+import ParagraphBoundingBoxDemo from "./examples/ParagraphBoundingBoxDemo";
+import ParagraphStylingDemo from "./examples/ParagraphStylingDemo";
+import ParagraphTextStylingDemo from "./examples/ParagraphTextStylingDemo";
 
 const App = () => {
   return (
@@ -57,7 +63,13 @@ const App = () => {
       {/* <SVGOpacityDemo /> */}
       {/* <SVGBlurDemo /> */}
       {/* <SnapshotDemo /> */}
-      <VideoExample />
+      {/* <VideoExample /> */}
+      {/* <ParagraphDemo /> */}
+      {/* <ParagraphPaintDemo /> */}
+      {/* <TextEffectsDemo /> */}
+      {/* <ParagraphBoundingBoxDemo /> */}
+      <ParagraphStylingDemo />
+      {/* <ParagraphTextStylingDemo /> */}
     </SafeAreaView>
   );
 };
