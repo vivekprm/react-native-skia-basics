@@ -61,6 +61,8 @@ import MatrixColorFilter from "./examples/MatrixColorFilter";
 import MatrixColorBlendFilter from "./examples/MatrixColorBlendFilter";
 import MatrixColorLerpFilter from "./examples/MatrixColorLerpFilter";
 import MatrixLinearToSRGBGammaFilter from "./examples/MatrixLinearToSRGBGammaFilter";
+import AlphaMaskDemo from "./examples/AlphaMaskDemo";
+import LuminanceMaskDemo from "./examples/LuminanceMaskDemo";
 
 const App = () => {
   return (
@@ -136,7 +138,9 @@ const App = () => {
       {/* <MatrixColorBlendFilter /> */}
       {/* <MatrixColorLerpFilter /> */}
       {/* <MatrixLinearToSRGBGammaFilter /> */}
-      <MatrixLinearToSRGBGammaFilter />
+      {/* <MatrixLinearToSRGBGammaFilter /> */}
+      {/* <AlphaMaskDemo /> */}
+      <LuminanceMaskDemo />
     </SafeAreaView>
   );
 };
