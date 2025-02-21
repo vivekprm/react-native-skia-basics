@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import PathDemo from "./examples/PathDemo";
 import TrimSVGPath from "./examples/TrimSVGPath";
 import FillTypeDemo from "./examples/FillTypeDemo";
@@ -63,10 +63,16 @@ import MatrixColorLerpFilter from "./examples/MatrixColorLerpFilter";
 import MatrixLinearToSRGBGammaFilter from "./examples/MatrixLinearToSRGBGammaFilter";
 import AlphaMaskDemo from "./examples/AlphaMaskDemo";
 import LuminanceMaskDemo from "./examples/LuminanceMaskDemo";
+import DiscretePathEffectDemo from "./examples/DiscretePathEffectDemo";
+import DashPathEffectDemo from "./examples/DashPathEffectDemo";
+import CornerPathEffectDemo from "./examples/CornerPathEffectDemo";
+import Path1DEffectDemo from "./examples/1DPathEffectDemo";
+import Path2DEffectDemo from "./examples/Path2DEffectDemo";
+import Line2DPathEffectDemo from "./examples/Line2DPathEffectDemo";
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {/* <PaintProperties /> */}
       {/* <SimpleTransformation /> */}
       {/* <OriginTransformation /> */}
@@ -140,8 +146,14 @@ const App = () => {
       {/* <MatrixLinearToSRGBGammaFilter /> */}
       {/* <MatrixLinearToSRGBGammaFilter /> */}
       {/* <AlphaMaskDemo /> */}
-      <LuminanceMaskDemo />
-    </SafeAreaView>
+      {/* <LuminanceMaskDemo /> */}
+      {/* <DiscretePathEffectDemo /> */}
+      {/* <DashPathEffectDemo /> */}
+      {/* <CornerPathEffectDemo /> */}
+      {/* <Path1DEffectDemo /> */}
+      {/* <Path2DEffectDemo /> */}
+      <Line2DPathEffectDemo />
+    </View>
   );
 };
 
