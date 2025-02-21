@@ -77,6 +77,10 @@ import AnimationHooksDemo from "./examples/AnimationHooksDemo";
 import { UsePathValueAnimation } from "./examples/UsePathValueAnimation";
 import UseClockAnimation from "./examples/UseClockAnimation";
 import CanvasSizeDemo from "./examples/CanvasSizeDemo";
+import UseTextureAnimation from "./examples/UseTextureAnimation";
+import ImageTextureAnimation from "./examples/ImageTextureAnimation";
+import UsePictureAsTextureAnimation from "./examples/UsePictureAsTextureAnimation";
+import RunOnUIDemo from "./examples/RunOnUIDemo";
 
 const App = () => {
   return (
@@ -168,7 +172,11 @@ const App = () => {
       {/* <AnimationHooksDemo /> */}
       {/* <UsePathValueAnimation /> */}
       {/* <UseClockAnimation /> */}
-      <CanvasSizeDemo />
+      {/* <CanvasSizeDemo /> */}
+      {/* <UseTextureAnimation /> */}
+      {/* <ImageTextureAnimation /> */}
+      {/* <UsePictureAsTextureAnimation /> */}
+      <RunOnUIDemo />
     </View>
   );
 };
