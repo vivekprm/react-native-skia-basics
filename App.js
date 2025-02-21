@@ -69,6 +69,8 @@ import CornerPathEffectDemo from "./examples/CornerPathEffectDemo";
 import Path1DEffectDemo from "./examples/1DPathEffectDemo";
 import Path2DEffectDemo from "./examples/Path2DEffectDemo";
 import Line2DPathEffectDemo from "./examples/Line2DPathEffectDemo";
+import { AnimationHelloWorld } from "./examples/AnimationHelloWorld";
+import { AnimatedGradientDemo } from "./examples/AnimatedGradientDemo";
 
 const App = () => {
   return (
@@ -152,7 +154,9 @@ const App = () => {
       {/* <CornerPathEffectDemo /> */}
       {/* <Path1DEffectDemo /> */}
       {/* <Path2DEffectDemo /> */}
-      <Line2DPathEffectDemo />
+      {/* <Line2DPathEffectDemo /> */}
+      {/* <AnimationHelloWorld /> */}
+      <AnimatedGradientDemo />
     </View>
   );
 };
