@@ -71,6 +71,8 @@ import Path2DEffectDemo from "./examples/Path2DEffectDemo";
 import Line2DPathEffectDemo from "./examples/Line2DPathEffectDemo";
 import { AnimationHelloWorld } from "./examples/AnimationHelloWorld";
 import { AnimatedGradientDemo } from "./examples/AnimatedGradientDemo";
+import { AnimationWithTouchHandler } from "./examples/AnimationWithTouchHandler";
+import { ElementTrackingAnimation } from "./examples/ElementTrackingAnimation";
 
 const App = () => {
   return (
@@ -156,7 +158,9 @@ const App = () => {
       {/* <Path2DEffectDemo /> */}
       {/* <Line2DPathEffectDemo /> */}
       {/* <AnimationHelloWorld /> */}
-      <AnimatedGradientDemo />
+      {/* <AnimatedGradientDemo /> */}
+      {/* <AnimationWithTouchHandler /> */}
+      <ElementTrackingAnimation />
     </View>
   );
 };
