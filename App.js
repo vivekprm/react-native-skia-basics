@@ -73,6 +73,10 @@ import { AnimationHelloWorld } from "./examples/AnimationHelloWorld";
 import { AnimatedGradientDemo } from "./examples/AnimatedGradientDemo";
 import { AnimationWithTouchHandler } from "./examples/AnimationWithTouchHandler";
 import { ElementTrackingAnimation } from "./examples/ElementTrackingAnimation";
+import AnimationHooksDemo from "./examples/AnimationHooksDemo";
+import { UsePathValueAnimation } from "./examples/UsePathValueAnimation";
+import UseClockAnimation from "./examples/UseClockAnimation";
+import CanvasSizeDemo from "./examples/CanvasSizeDemo";
 
 const App = () => {
   return (
@@ -160,7 +164,11 @@ const App = () => {
       {/* <AnimationHelloWorld /> */}
       {/* <AnimatedGradientDemo /> */}
       {/* <AnimationWithTouchHandler /> */}
-      <ElementTrackingAnimation />
+      {/* <ElementTrackingAnimation /> */}
+      {/* <AnimationHooksDemo /> */}
+      {/* <UsePathValueAnimation /> */}
+      {/* <UseClockAnimation /> */}
+      <CanvasSizeDemo />
     </View>
   );
 };
